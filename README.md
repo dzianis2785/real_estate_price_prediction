@@ -49,7 +49,7 @@
 
 Также была использована информация основана на данных переписи населения США за 2020 год и доступна на https://data.census.gov/table.
 
-Все используемые в проекте **датасеты** можно найти [**Здесь**](https://drive.google.com/drive/folders/1GU6He6cf1d_2759-EKNIWgT0WfnuKcyv?usp=sharing).
+Все используемые в проекте **датасеты** можно найти [**Здесь**](https://drive.google.com/file/d/15Do3SFiQ42AFEWoZ04Aajgh8VIpNTj3Y/view?usp=sharing).
 
 ## Установка проекта
 
