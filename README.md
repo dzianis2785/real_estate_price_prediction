@@ -1,74 +1,213 @@
+# 🏠 Real Estate Price Prediction Using Machine Learning
+
 ![](./images/data_cleaning.png)
-# <center> Предсказание цены недвижимости методами машинного обучения </center>
-## Оглавление
-1. [Описание проекта](#Описание-проекта)
-2. [Описание данных](#Описание-данных)
-3. [Установка проекта](#Установка-проекта)
-4. [Использование проекта](#Использование-проекта)
-5. [Авторы](#Авторы)
-6. [Выводы](#Выводы)
 
-## Описание проекта
+## 📌 Project Overview
 
-> **Проект** помогает решить реальную бизнес задачу: увеличить скорость и качество совершения сделок для агенства недвижимости.
+This project focuses on solving a real-world business problem for a real
+estate agency --- improving the speed and accuracy of property price
+evaluation.
 
-Основные этапы выполнения проекта:
-* Знакомство с данными .
-* Очистка данных от мусорных данных, заполнение пропусков.
-* Удаление признаков и записей, которые не несут полезной информации.
-* Отбор признаков и feature engineering.
-* Построение нескольких регрессионных моделей.
-* Отбор наиболее сильных моделей.
-* Подбор наилучших гиперпараметров для наилучшей модели.
-* Определение топ-10 признаков, которые сильнее всего влияют на целевой признак.
+Using machine learning techniques, the project builds predictive models
+that estimate housing prices based on property characteristics,
+demographic indicators, and geographic features.
 
-**Цели:**
-* Провести разведывательный анализ и очистку исходных данных.
-* Построить модель для прогнозирования стоимости недвижимости.
-* Выделить наиболее значимые факторы, влияющие на стоимость недвижимости.
+The project demonstrates a full data science workflow including:
 
+-   Data cleaning and preprocessing
+-   Exploratory Data Analysis (EDA)
+-   Feature engineering
+-   Model training and evaluation
+-   Hyperparameter tuning
+-   Feature importance analysis
+
+------------------------------------------------------------------------
+
+# 📚 Table of Contents
+
+1.  Project Description
+2.  Data Description
+3.  Exploratory Data Analysis
+4.  Modeling
+5.  Results
+6.  Project Structure
+7.  Installation
+8.  Usage
+9.  Author
+10. Conclusions
+
+------------------------------------------------------------------------
+
+# 📖 Project Description
+
+The goal of this project is to build a machine learning model capable of
+predicting real estate prices.
+
+Project stages:
+
+1.  Understanding the dataset
+2.  Data cleaning and handling missing values
+3.  Removing noisy and irrelevant features
+4.  Feature engineering and feature selection
+5.  Training several regression models
+6.  Selecting the best performing models
+7.  Hyperparameter optimization
+8.  Identifying the most influential features
+
+### 🎯 Objectives
+
+-   Perform exploratory data analysis and data cleaning
+-   Build a predictive model for real estate prices
+-   Identify key factors that influence housing prices
 
 ![](./images/example_outliers.png)
 
-**Данный проект** направлен на демонстрацию применения различных регрессионных моделей машинного обучения и подбора оптимальных гиперпараметров.
+------------------------------------------------------------------------
 
-**О структуре проекта:**
-* [data_cleaning_example.ipynb](./data_cleaning_example.ipynb) - jupyter-ноутбук, содержащий основной код проекта, в котором демонстрируются методы и подходы решения задач очистки данных.
-* [requirements.txt](./requirements.txt) - все версии используемых библиотек.
+# 🗂 Data Description
 
-## Описание данных
-В этом проекте используются реальные данные для рынка недвижимости США и Канады.
+The project uses real estate market data from the United States and
+Canada.
 
-Требования агентство недвижимости состояли в построении модели, которая бы прогнозировала цены на жильё, опираясь на параметры самого жилья, а также состояние доходов, уровня образования жителей, а также от размера и месторасположения города, где располагается недвижимость. 
+The agency required a model capable of predicting housing prices based
+on:
 
-Исходный датасет представляет собой набор данных из более 377 000 записей о совершенных транзакциях агенства по недвижимости с информацией о параметрах жилья на 18 признаков (вместе целевым признаком).
+-   property characteristics
+-   residents' income levels
+-   education levels of residents
+-   city size
+-   geographic location
 
-Мною зарание было проведено геокодирование объектов недвижимости по полученным адресам с помощью библтотеки [Geopy](https://geopy.readthedocs.io/en/stable/).
+The original dataset contains:
 
-В этом проекте я использовал данные для определения координат центров городов США. Данные взяты из [GitHub](https://gist.githubusercontent.com/esjewett/635c1549ee0eee6b32acee36012763f0/raw/US_cities.csv) репозитория открытой географической базы данных  [geonames.org](https://www.geonames.org/) .
+-   377,000+ real estate transactions
+-   18 features including the target variable
 
-Также была использована информация основана на данных переписи населения США за 2020 год и доступна на https://data.census.gov/table.
+### Geographical Data
 
-Все используемые в проекте **датасеты** можно найти [**Здесь**](https://drive.google.com/file/d/15Do3SFiQ42AFEWoZ04Aajgh8VIpNTj3Y/view?usp=sharing).
+Property locations were geocoded using the [Geopy](https://geopy.readthedocs.io/en/stable/) library.
 
-## Установка проекта
+Additional geographic information about U.S. city center coordinates was
+obtained from the Geonames [GitHub](https://gist.githubusercontent.com/esjewett/635c1549ee0eee6b32acee36012763f0/raw/US_cities.csv) open geographic database. 
 
-```
+### Demographic Data
+
+Socioeconomic indicators were taken from:
+
+U.S. Census 2020
+https://data.census.gov
+
+### Datasets
+
+All datasets used in the project can be downloaded here:
+
+https://drive.google.com/file/d/15Do3SFiQ42AFEWoZ04Aajgh8VIpNTj3Y/view
+
+------------------------------------------------------------------------
+
+# 🔎 Exploratory Data Analysis
+
+During the analysis several issues were identified:
+
+-   Large number of missing values
+-   Duplicate records
+-   Outliers in numerical features
+-   Strong skewness in several variables
+
+Most numerical features follow a log-normal distribution with right
+skewness.
+
+Data cleaning included:
+
+-   Removing duplicates
+-   Handling missing values
+-   Removing unrealistic property prices
+-   Feature transformations
+
+------------------------------------------------------------------------
+
+# 🤖 Modeling
+
+Several machine learning regression models were tested:
+
+-   Linear Regression
+-   Ridge Regression
+-   Lasso Regression
+-   Random Forest
+-   Gradient Boosting
+-   XGBoost
+
+Hyperparameter tuning was performed using cross-validation.
+
+------------------------------------------------------------------------
+
+# 📊 Results
+
+The best performance was achieved using tree-based ensemble models.
+
+Random Forest and Gradient Boosting significantly outperformed linear
+models due to nonlinear relationships in the data.
+
+The final model identified the top 10 most influential features
+affecting real estate prices.
+
+------------------------------------------------------------------------
+
+# 📂 Project Structure
+
+real_estate_price_prediction/
+
+-   real_estate_price_prediction_project.ipynb
+-   requirements.txt
+-   README.md
+
+------------------------------------------------------------------------
+
+# ⚙️ Installation
+
+``` bash
 git clone https://github.com/dzianis2785/real_estate_price_prediction.git
 ```
 
-## Использование проекта
-Вся информация о работе представлена в jupyter-ноутбуке real_estate_price_prediction_project.ipynb .
+Install dependencies:
 
-## Авторы
+``` bash
+pip install -r requirements.txt
+```
 
-***Dzianis Krauchuk***  
-* e-mail: dzianis2785@gmail.com
-* [LinkedIn](https://www.linkedin.com/in/dzianis-krauchuk-1a09b2278/)
+------------------------------------------------------------------------
 
-## Выводы
+# ▶️ Usage
 
-1. Данные очень грязные, шумные и содержат в себе очень много пропусков и дублей.
-2. Большинство числовых признаков имеют логнормальное распределение с ассиметрией на правую сторону.
-3. Исходных данных не хватило для построения качественной модели машинного обучения, поэтому пришлось обогащать таблицу данными из сторонних источников.
-4. Линейные регрессионные модели проигрывают в качестве модели случайного леса и бустинговым моделям, что говорит о том, что в данных присутствует много нелинейных зависимостей.
+Open the main notebook:
+
+real_estate_price_prediction_project.ipynb
+
+The notebook contains:
+
+-   full analysis
+-   data cleaning workflow
+-   model training
+-   evaluation results
+
+------------------------------------------------------------------------
+
+# 👤 Author
+
+Dzianis Krauchuk
+
+Email: dzianis2785@gmail.com\
+LinkedIn: https://www.linkedin.com/in/dzianis-krauchuk-1a09b2278/
+
+------------------------------------------------------------------------
+
+# 📌 Conclusions
+
+1.  The dataset contains a large amount of noise, missing values, and
+    duplicates.
+2.  Most numerical features follow a log-normal distribution.
+3.  The original dataset alone was insufficient for building a strong
+    predictive model, so it was enriched with external data sources.
+4.  Ensemble models such as Random Forest and Gradient Boosting
+    outperform linear regression models.
+5.  The data contains strong nonlinear relationships between variables.
