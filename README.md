@@ -134,8 +134,8 @@ Several machine learning regression models were tested:
 -   Ridge Regression
 -   Lasso Regression
 -   Random Forest
--   Gradient Boosting
 -   XGBoost
+-   LightGBM
 
 Hyperparameter tuning was performed using cross-validation.
 
@@ -145,7 +145,7 @@ Hyperparameter tuning was performed using cross-validation.
 
 The best performance was achieved using tree-based ensemble models.
 
-Random Forest and Gradient Boosting significantly outperformed linear
+Random Forest and Gradient Boosting Models significantly outperformed linear
 models due to nonlinear relationships in the data.
 
 The final model identified the top 10 most influential features
@@ -208,6 +208,6 @@ LinkedIn: https://www.linkedin.com/in/dzianis-krauchuk-1a09b2278/
 2.  Most numerical features follow a log-normal distribution.
 3.  The original dataset alone was insufficient for building a strong
     predictive model, so it was enriched with external data sources.
-4.  Ensemble models such as Random Forest and Gradient Boosting
+4.  Ensemble models such as Random Forest and Gradient Boosting Models 
     outperform linear regression models.
 5.  The data contains strong nonlinear relationships between variables.
